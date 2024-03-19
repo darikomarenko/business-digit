@@ -1,0 +1,23 @@
+.main-page {
+    display: flex;
+    flex-direction: column;
+    background-color: grey;
+    background-size: cover;
+
+
+    &__title {
+        color: black;
+    }
+
+    &__cards {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+        &-card {
+            border: 1px black solid;
+            padding: 10px;
+            cursor: pointer;
+        }
+    }
+}
