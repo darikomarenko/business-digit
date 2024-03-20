@@ -1,8 +1,9 @@
 .main-page {
     display: flex;
     flex-direction: column;
-    background-color: grey;
+    background-image: linear-gradient(to bottom right, #FDFCFB, #E2D1C3);
     background-size: cover;
+    height: 100vh;
 
 
     &__title {
@@ -18,6 +19,13 @@
             border: 1px black solid;
             padding: 10px;
             cursor: pointer;
+
+            &:hover {
+                background-color: black;
+                color: white;
+                border-color: white;
+            }
         }
+
     }
 }

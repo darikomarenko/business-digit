@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import styles from './styles.module.scss'
 import { inject, observer } from 'mobx-react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ClientsStore } from './store/ClientStore';
