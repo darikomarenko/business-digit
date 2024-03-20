@@ -7,7 +7,7 @@ import clientsStore from './store/ClientStore.ts';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
         <Provider clientsStore={clientsStore}>
-    <App />
+    <App clientsStore={clientsStore} />
     </Provider>
   </React.StrictMode>,
 )

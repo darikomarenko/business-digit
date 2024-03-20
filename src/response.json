@@ -1,0 +1,40 @@
+{
+    "clients": [
+      {
+        "id": "1",
+        "name": "Иван",
+        "patronymic": "Иванович",
+        "surname": "Иванов",
+        "email": "ivan@mail.ru",
+        "phone": "+711111111111",
+        "address": "Москва"
+      },
+      {
+        "id": "2",
+        "name": "Денис",
+        "patronymic": "Иванович",
+        "surname": "Денисов",
+        "email": "denis@mail.ru",
+        "phone": "+71112222222",
+        "address": "Волгоград"
+      },
+      {
+        "id": "3",
+        "name": "Иван",
+        "patronymic": "Сергеевич",
+        "surname": "Тихонов",
+        "email": "ivantih@mail.ru",
+        "phone": "+79078987878",
+        "address": "Москва"
+      },
+      {
+        "id": "4",
+        "name": "Пётр",
+        "patronymic": "Иванович",
+        "surname": "Петров",
+        "email": "petr@mail.ru",
+        "phone": "+79089090909",
+        "address": "Сочи"
+      }
+    ]
+  }

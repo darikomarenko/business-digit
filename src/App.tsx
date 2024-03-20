@@ -7,19 +7,16 @@ import Diagrams from './components/Diagrams';
 import Header from './components/Header';
 import NotFound from './components/NotFound';
 import MainPage from './components/MainPage';
-
+import ClientForm from './components/Clients/ClientForm';
+import { fetchUsers } from './api'
 interface AppProps {
-  clientsStore?: ClientsStore;
+  clientsStore: ClientsStore;
 }
 
 const App: React.FC<AppProps> = inject('clientsStore')(observer(({ clientsStore }) => {
   useEffect(() => {
-    fetch('api/users')
-      .then((response) => response.json())
-      .then((data) => clientsStore.setClients(data))
-      .catch((error) => {
-        console.log(error);
-      });
+    const data = fetchUsers()
+    clientsStore.setClients(data)
   }, [clientsStore]);
 
   return (
@@ -29,6 +26,7 @@ const App: React.FC<AppProps> = inject('clientsStore')(observer(({ clientsStore 
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/clients" element={<Clients />} />
+            <Route path="/addclient" element={<ClientForm />} />
             <Route path="/diagrams" element={<Diagrams />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
