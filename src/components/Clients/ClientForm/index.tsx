@@ -2,8 +2,8 @@ import styles from './styles.module.scss';
 import {ZodType, z} from 'zod'
 import {useForm} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod';
-import {addUser} from '../../../api'
 import { useNavigate } from 'react-router-dom';
+import clientsStore, { Client } from '../../../store/ClientStore';
 
 type FormData = {
     name: string,
@@ -29,11 +29,9 @@ export default function ClientForm() {
     const navigate = useNavigate();
 
     const submitData = (data: FormData) => {
-        console.log(data);
-        addUser(data);
+        clientsStore.addClient(data as Client)
         alert('Клиент добавлен');
         navigate('/clients');
-
     }
     
   return (

@@ -1,26 +1,21 @@
-import React, { useEffect } from 'react';
-import styles from './styles.module.scss'
-import { inject, observer } from 'mobx-react';
+import { Provider } from 'mobx-react';
+import clientsStore from './store/ClientStore.ts';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ClientsStore } from './store/ClientStore';
 import Clients from './components/Clients';
 import Diagrams from './components/Diagrams';
 import Header from './components/Header';
 import NotFound from './components/NotFound';
 import MainPage from './components/MainPage';
 import ClientForm from './components/Clients/ClientForm';
-import { fetchUsers } from './api'
-interface AppProps {
-  clientsStore: ClientsStore;
+
+const stores = {
+  clientStore: clientsStore
 }
 
-const App: React.FC<AppProps> = inject('clientsStore')(observer(({ clientsStore }) => {
-  useEffect(() => {
-    const data = fetchUsers()
-    clientsStore.setClients(data)
-  }, [clientsStore]);
+function App() {
 
   return (
+    <Provider {...stores}>
       <Router>
         <Header />
         <div>
@@ -33,7 +28,8 @@ const App: React.FC<AppProps> = inject('clientsStore')(observer(({ clientsStore 
           </Routes>
         </div>
       </Router>
+      </Provider>
   );
-}));
+}
 
 export default App;

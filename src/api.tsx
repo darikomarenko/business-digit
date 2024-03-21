@@ -1,4 +1,4 @@
-export type User = {
+type User = {
     id?: number
     name: string
     patronymic: string
@@ -28,19 +28,29 @@ function getLastID(users: User[]): number {
     return [...users].sort((a, b) => b.id! - a.id!)[0].id!
 }
 
-export function fetchUsers(): User[] {
-    return usersFromLocalStorage()
+
+export function fetchUsers(): Promise<object[]> {
+    console.log('Send get users request')
+    return new Promise<object[]>((res) => {
+        setTimeout(() => res(usersFromLocalStorage()), Math.random() * 3000);
+    });
 }
 
-export function addUser(user: User) {
+export function addUser(user: User): Promise<object> {
+    console.log('Send add users request')
     const users = usersFromLocalStorage()
     let lastID = getLastID(users)
     users.push({...user, id: ++lastID})
     saveToLocalStorage(users)
+
+    return new Promise((res) => {
+        setTimeout(() => res({}), Math.random() * 3000);
+    });
 }
 
-export function updateUser(user: User) {
-    let users = usersFromLocalStorage()
+export function updateUser(user: User): Promise<object> {
+    console.log('Send update user request')
+    let users: User[] = usersFromLocalStorage()
     users = users.map((u) =>  {
         if (u.id == user.id) {
             return user
@@ -48,10 +58,19 @@ export function updateUser(user: User) {
         return u
     })
     saveToLocalStorage(users)
+
+    return new Promise((res) => {
+        setTimeout(() => res({}), Math.random() * 3000);
+    });
 }
 
-export function deleteUser(userID: number) {
-    let users = usersFromLocalStorage()
+export function deleteUser(userID: number): Promise<object> {
+    console.log('Send delete user request')
+    let users: User[] = usersFromLocalStorage()
     users = users.filter((u) => u.id != userID)
     saveToLocalStorage(users)
+
+    return new Promise((res) => {
+        setTimeout(() => res({}), Math.random() * 3000);
+    });
 }
