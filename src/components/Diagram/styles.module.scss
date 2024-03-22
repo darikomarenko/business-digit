@@ -1,0 +1,14 @@
+.addform {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 10px;
+    padding-top: 10px;
+
+    &__firstline,
+    &__secondline {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+}
